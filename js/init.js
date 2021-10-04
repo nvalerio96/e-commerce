@@ -11,11 +11,11 @@ const OBT_LOCAL_STORAGE_USERNAME = localStorage.getItem('username');
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
-}
+};
 
 var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
-}
+};
 
 var getJSONData = function(url){
     var result = {};
@@ -40,40 +40,84 @@ var getJSONData = function(url){
         hideSpinner();
         return result;
     });
-}
+};
 
 //funcion que llama la barra de navegacion en todas las paginas con o sin usuario
 function spawnNavBar() {
   if(OBT_LOCAL_STORAGE_USERNAME){
-    OBT_NAV_VAR.innerHTML =`<div class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-    <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-    <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-    <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-    <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-    <input type="submit" value=` + OBT_LOCAL_STORAGE_USERNAME + ` class="py-2 d-none d-md-inline-block"  id="logout">
+    OBT_NAV_VAR.innerHTML = `
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-column flex-md-row" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto text-center">
+      <li class="nav-item active">
+        <a class="nav-link" href="inicio.html">Inicio</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="categories.html">Categorías</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="products.html">Productos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="sell.html">Vender</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="cart.html">Mi carrito</a>
+      </li>
+      <li class="nav-item active">
+      <input type="submit" value=` + OBT_LOCAL_STORAGE_USERNAME + ` class="nav-item py-2"  id="logout">
+      </li>
+    </ul>
     </div>`
+    // <div class="container d-flex flex-column flex-md-row justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
+    // <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
+    // <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+    // <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+    // <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+    // <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+    // <input type="submit" value=` + OBT_LOCAL_STORAGE_USERNAME + ` class="py-2 d-none d-md-inline-block"  id="logout">
+    // </div>`
   }else {
-    OBT_NAV_VAR.innerHTML = `<div class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-    <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-    <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-    <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-    <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-    <a class="py-2 d-none d-md-inline-block" href="index.html">LogIn</a>
+    OBT_NAV_VAR.innerHTML = `
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-column flex-md-row" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto text-center">
+      <li class="nav-item active">
+        <a class="nav-link" href="inicio.html">Inicio</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="categories.html">Categorías</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="products.html">Productos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="sell.html">Vender</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="cart.html">Mi carrito</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">LogIn</a>
+      </li>
+    </ul>
     </div>`
   }
-}
+};
 
 //funcion de logout facil de modificar para proximas entregas
 function logout() {
   localStorage.removeItem('username');
   location.href = './index.html';
-}
+};
 
 document.addEventListener("DOMContentLoaded", function(e){
   
-  spawnNavBar()
+  spawnNavBar();
   
   const LOGOUT_BUTTON = document.getElementById('logout');
   

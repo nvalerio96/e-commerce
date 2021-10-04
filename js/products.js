@@ -50,7 +50,7 @@ function showProductsList(){
 
          //variable vacia que se llena de info de los objetos para ser enviada al html      
         contentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <a href="product-info.html" class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                     <img src="` + item.imgSrc + `" alt="` + item.description + `" class="img-thumbnail">
@@ -63,7 +63,7 @@ function showProductsList(){
                 <p>` + item.description + `</p>
                 </div>
             </div>
-        </div>
+        </a>
         `
         }
         
