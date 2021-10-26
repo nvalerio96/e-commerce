@@ -45,5 +45,4 @@ document.addEventListener("DOMContentLoaded", function(e){
             subTotalMultiplier(cartInfo);
         }
     });
-
 });
