@@ -1,4 +1,5 @@
 var productInfo = [];
+var productsURL = [];
 var productComments = [];
 
 //funcion que carga la informacion del JSON al HTML
@@ -12,33 +13,99 @@ function showProductInfo(productData) {
         <h2 class="mb-1 text-muted">` + product.currency + `` + product.cost + `</h2>
     </div><br>
     <h3> Imágenes ilustrativas </h3>
-    <div class="container mt-5">
-        <div id="img"></div>
+    <div class="row">
+        <div id="carousel" class="col-8"></div>
+        <div class="col-4">
         <p> ` + product.description + `</p>
         <p class="mb-1 text-muted text-right">Categoría: ` + product.category + ` <br> Cant. Vendidos: ` + product.soldCount + ` </p>
+        </div>
     </div>
     <h4 class="mt-4"> Productos relacionados </h4>
-    <> ` + product.relatedProducts + ` </>`;
+    <div id="related" class="px-5 row"></div>`;
 
     document.getElementById("prod-info").innerHTML = contentToAppend;
 };
 
 //funcion que recorre la lista de imagenes del producto y la imprime en el HTML
-function showImg(productData) {
+function showCarousel(productData) {
 
     let product = productData[0].images;
 
-    let imgToAppend = "";
+    let imgToCarousel = "";
+
+    let carouselIndicators = "";
+
+    let carouselToAppend = `
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators" id="indicators">
+      </ol>
+      <div class="carousel-inner" id="imgSpot">
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    `;
 
     for(let i = 0; i < product.length; i++) {
         let img = product[i];
 
-        imgToAppend += `
-        <img src="`+img+`">
-        `;
+        if(i == 0){
+            imgToCarousel += `
+            <div class="carousel-item active">
+                <img src="`+img+`" class="d-block w-100" alt="Imagen `+(i+1)+` del producto" id="img`+i+`">
+            </div>
+            `;
+        } else {
+            imgToCarousel += `
+            <div class="carousel-item">
+                <img src="`+img+`" class="d-block w-100" alt="Imagen `+(i+1)+` del producto" id="img`+i+`">
+            </div>
+            `;
+        };
+
+        if(i == 0){
+            carouselIndicators += `
+            <li data-target="#carouselExampleIndicators" data-slide-to="`+i+`" class="active"></li>
+            `;
+        } else {
+            carouselIndicators += `
+            <li data-target="#carouselExampleIndicators" data-slide-to="`+i+`"></li>
+            `;
+        };
     };
 
-    document.getElementById('img').innerHTML = imgToAppend;
+    document.getElementById('carousel').innerHTML = carouselToAppend;
+    document.getElementById('imgSpot').innerHTML = imgToCarousel;
+    document.getElementById('indicators').innerHTML = carouselIndicators;
+};
+
+function showRelatedProducts(relatedProductsArray, criteria) {
+    let relatedToAppend = "";
+
+    for(let i = 0; i < relatedProductsArray.length; i++){
+        let productOfArray = relatedProductsArray[i]
+
+        if(criteria.indexOf(relatedProductsArray.indexOf(productOfArray)) != -1) {
+            relatedToAppend += `
+            <div class="card  col-3 mr-2">
+                <img src="`+productOfArray.imgSrc+`" class="card-img-top" alt="`+productOfArray.name+`">
+                <div class="card-body">
+                    <h5 class="card-title">`+productOfArray.name+`</h5>
+                    <p class="card-text">`+productOfArray.description+`</p>
+                    <a href="#" class="btn btn-primary">VER PRODUCTO</a>
+                </div>
+            </div>
+            `;
+        };
+    };
+
+    document.getElementById('related').innerHTML = relatedToAppend;
 };
 
 //funcion que muestra los comentarios cargados del JSON
@@ -82,7 +149,7 @@ function showComments(comments) {
     };
 
     document.getElementById("prod-comments").innerHTML = `
-    <div class="container mt-4">
+    <div class="mt-4 px-4">
         `+ contentToAppend +`
     </div>`;
 };
@@ -91,7 +158,7 @@ function showComments(comments) {
 function makeComment() {
 
     let contentToAppend = `
-    <form>
+    <form class="p-4">
         <textarea placeholder="Postea un comentario!" name="comment" cols="50" rows="2" id="textarea"></textarea><br>
         <lavel for="rate">Valora el producto: </label>
         <select name="rate" id="rate">
@@ -116,7 +183,13 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultOBJ.status === "ok") {
             productInfo.push(resultOBJ.data);
             showProductInfo(productInfo);
-            showImg(productInfo);
+            showCarousel(productInfo);
+            getJSONData(PRODUCTS_URL).then(function (resultOBJ) {
+                if (resultOBJ.status === "ok") {
+                    productsURL = resultOBJ.data;
+                    showRelatedProducts(productsURL, productInfo[0].relatedProducts);
+                }
+            });
         }
     });
 

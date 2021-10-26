@@ -13,19 +13,26 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
   <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+    img{
+      width: 60px;
+      height: 60px;
     }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
+    th{
+      text-align: center !important;
+    }
+    td{
+      border-top: 1px rgba(0, 0, 0, 0.363) solid;
+      border-bottom: 1px rgba(0, 0, 0, 0.363) solid;
+    }
+    td.info{
+      width: 25%;
+      text-align: center;
+    }
+    input{
+      width: 4em;
+    }
+    .delete{
+      color: red;
     }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -36,14 +43,50 @@
 <body>
   <nav class="navbar navbar-expand-lg site-header sticky-top navbar-dark py-1 bg-dark" id="navbar">
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main" class="pb-5">
+    <div class="text-center p-4">
+      <h2>Carrito</h2>
     </div>
-  </div>
+    <div class="container">
+      <h4>Productos</h4>
+      <div class="container mb-3">
+        <table>
+          <thead>
+              <tr>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Costo unidad</th>
+                  <th>Cantidad</th>
+                  <th>Subtotal</th>
+              </tr>
+          </thead>
+          <tbody id="products">
+          
+          </tbody>
+        </table>
+      </div>
+      <h4>Modo de pago</h4>
+      <div class="container mb-3" id="payType">
+
+      </div>
+      <h4>Metodo de envio</h4>
+      <div class="container mb-3" id="sendMethod">
+
+      </div>
+      <h4>Total</h4>
+      <div class="container mb-3" id="total">
+
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+    </div>
+  </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
