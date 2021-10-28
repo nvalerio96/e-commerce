@@ -8,20 +8,20 @@ function showProductInfo(productData) {
     let product = productData[0];
 
     let contentToAppend = `
-    <div class="d-flex w-100 justify-content-between">
-        <h1 class="mb-1">`+ product.name +`</h1>
-        <h2 class="mb-1 text-muted">` + product.currency + `` + product.cost + `</h2>
+    <div class="row">
+        <h1 class="col-sm-6 text-left mb-1">`+ product.name +`</h1>
+        <div class="col-md-3 col-sm-2"></div>
+        <h2 class="col-md-3 col-sm-4 mb-1 text-muted">` + product.currency + `` + product.cost + `</h2>
     </div><br>
     <h3> Imágenes ilustrativas </h3>
     <div class="row">
-        <div id="carousel" class="col-8"></div>
-        <div class="col-4">
+        <div id="carousel" class="col-lg-8" style="padding-bottom: 5px"></div>
+        <div class="border_info col-lg-4">
         <p> ` + product.description + `</p>
-        <p class="mb-1 text-muted text-right">Categoría: ` + product.category + ` <br> Cant. Vendidos: ` + product.soldCount + ` </p>
+        <p class="mb-0 text-muted text-right">Categoría: ` + product.category + ` <br> Cant. Vendidos: ` + product.soldCount + ` </p>
         </div>
     </div>
-    <h4 class="mt-4"> Productos relacionados </h4>
-    <div id="related" class="px-5 row"></div>`;
+    `;
 
     document.getElementById("prod-info").innerHTML = contentToAppend;
 };
@@ -36,7 +36,7 @@ function showCarousel(productData) {
     let carouselIndicators = "";
 
     let carouselToAppend = `
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide border_carousel" data-ride="carousel">
       <ol class="carousel-indicators" id="indicators">
       </ol>
       <div class="carousel-inner" id="imgSpot">
@@ -93,12 +93,12 @@ function showRelatedProducts(relatedProductsArray, criteria) {
 
         if(criteria.indexOf(relatedProductsArray.indexOf(productOfArray)) != -1) {
             relatedToAppend += `
-            <div class="card  col-3 mr-2">
+            <div class="card col-lg-3 col-md-4 col-sm-6" style="max-width: 250px; max-height: 350px; padding-top: 5px">
                 <img src="`+productOfArray.imgSrc+`" class="card-img-top" alt="`+productOfArray.name+`">
                 <div class="card-body">
-                    <h5 class="card-title">`+productOfArray.name+`</h5>
-                    <p class="card-text">`+productOfArray.description+`</p>
-                    <a href="#" class="btn btn-primary">VER PRODUCTO</a>
+                    <h5 class="card-title overflow-auto" style="max-height: 50px">`+productOfArray.name+`</h5>
+                    <p class="card-text overflow-auto" style="height: 75px">`+productOfArray.description+`</p>
+                    <a href="#" class="btn btn-primary overflow-auto" style="width: 100%; max-height: 65px">VER PRODUCTO</a>
                 </div>
             </div>
             `;
@@ -136,13 +136,14 @@ function showComments(comments) {
         };
 
         contentToAppend += `
-        <div class="border border-primary p-4">
-        <div class="d-flex w-100 justify-content-between">
-            <h5> ` + comment.user + ` </h5>
-            <h5 class="text-muted"> ` + comment.dateTime + ` </h5>
-        </div>
-        ` + stars + `
-        <p> ` + comment.description + ` </p>
+        <div class="border_comment p-3">
+            <div class="row">
+                <h5 class="col-md-6 user" style="width: 100%"> ` + comment.user + ` </h5>
+                <div class="col-md-3"></div>
+                <h5 class="col-md-3 text-muted  date" style="width: 100%"> ` + comment.dateTime + ` </h5>
+            </div>
+            ` + stars + `
+            <p class="overflow-auto comment" style="max-height: 75px"> ` + comment.description + ` </p>
         </div><br>
         `;
 
@@ -158,8 +159,8 @@ function showComments(comments) {
 function makeComment() {
 
     let contentToAppend = `
-    <form class="p-4">
-        <textarea placeholder="Postea un comentario!" name="comment" cols="50" rows="2" id="textarea"></textarea><br>
+    <form class="p-4 w-100">
+        <textarea placeholder="Postea un comentario!" name="comment" cols="50" rows="2" id="textarea" class="w-100"></textarea><br>
         <lavel for="rate">Valora el producto: </label>
         <select name="rate" id="rate">
             <option value="1">1</option>

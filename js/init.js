@@ -50,8 +50,8 @@ function spawnNavBar() {
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse flex-column flex-md-row" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto text-center">
+    <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
+    <ul class="navbar-nav w-75 justify-content-between">
       <li class="nav-item active">
         <a class="nav-link" href="inicio.html">Inicio</a>
       </li>
@@ -93,8 +93,8 @@ function spawnNavBar() {
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse flex-column flex-md-row" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto text-center">
+    <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
+    <ul class="navbar-nav w-75 justify-content-between">
       <li class="nav-item active">
         <a class="nav-link" href="inicio.html">Inicio</a>
       </li>
