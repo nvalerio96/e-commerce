@@ -19,14 +19,43 @@
 <body>
   <nav class="navbar navbar-expand-md site-header sticky-top navbar-dark bg-dark py-2" id="navbar">
   </nav>
-  <main role="main" class="pb-5">
-
+  <main role="main" class="pb-2 pt-3"  style="min-height: 75vh;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 mb-3 border_info">
+          <h4 class="mt-2"> Información del usuario </h4><br>
+          <div id="userInfo">
+            <div class="text-center">
+              <img src="img/no_profile.jpg" alt="Foto de perfil" id="profilePic" style="height: 150px; width: 150px; border-style: solid; border-width: 2px; border-color: rgba(124, 56, 11, 0.521); border-radius: 5%; padding: 5px; background-color: rgba(2, 9, 46, 0.26);"><br><br>
+            </div>
+            <h5 id="imprName">a</h5><br>
+            <p id="imprAge">a</p>
+            <p id="impreMail">a</p>
+            <p id="imprContactNum">a</p>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 mb-3 border_carousel pb-3">    
+          <h4 class="mt-2"> Realizar cambios </h4>
+          <div>
+            <form class="text-center border_comment p-3">
+              <label for="fullName">Nombres y apellidos:</label><br>
+              <input type="text" id="fullName" style="max-width: 90%;"><br><br>
+              <label for="age">Edad:</label><br>
+              <input type="number" min="1" id="age"  style="max-width: 90%;"><br><br>
+              <label for="eMail">E-mail:</label><br>
+              <input type="email" id="eMail"  style="max-width: 90%;"><br><br>
+              <label for="contactNum">Teléfono de contacto:</label><br>
+              <input type="text" id="contactNum"  style="max-width: 90%;"><br><br>
+              <button>Guardar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
-      <p class="float-right">
-        <a href="#">Volver arriba</a>
-      </p>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
     </div>
   </footer>
