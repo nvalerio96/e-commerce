@@ -121,6 +121,7 @@ function spawnNavBar() {
 //funcion de logout facil de modificar para proximas entregas
 function logout() {
   localStorage.removeItem('username');
+  localStorage.removeItem("userdata");
   location.href = './index.html';
 };
 

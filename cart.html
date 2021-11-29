@@ -47,44 +47,151 @@
     <div class="text-center p-4">
       <h2>Carrito</h2>
     </div>
-    <div class="container">
+    <div class="container" id="fullPage">
+      <h1 id="success" class="text-center"></h1>
       <h4>Productos</h4>
-      <div>
-        <label for="moneda">Selecciona una moneda: </label>
-        <select name="moneda" id="moneda">
-          <option value="predeterminado" selected>original</option>
-          <option value="pesos">UYU</option>
-          <option value="dolares">USD</option>
-        </select>
+      <div id="table">
+        <div>
+          <label for="moneda">Selecciona una moneda: </label>
+          <select class="custom-select d-block w-100" style="max-width: 150px;" name="moneda" id="moneda">
+            <option value="pesos" selected>UYU</option>
+            <option value="dolares">USD</option>
+          </select>
+        </div>
+        <div class="mb-3 overflow-auto" style="max-width: 100%">
+          <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>C/U</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="productsBody">
+            
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="container mb-3 overflow-auto" style="max-width: 100%">
-        <table>
-          <thead>
-              <tr>
-                  <th>Imagen</th>
-                  <th>Nombre</th>
-                  <th>Costo unidad</th>
-                  <th>Cantidad</th>
-                  <th>Subtotal</th>
-              </tr>
-          </thead>
-          <tbody id="products">
-          
-          </tbody>
-        </table>
-      </div>
-      <h4>Modo de pago</h4>
-      <div class="container mb-3" style="border: solid; border-width: 2px;border-color: rgba(206, 142, 5, 0.349)" id="payType">
+      <hr class="my-4">
+      <h5>Forma de pago</h5>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPago">
+          Selecciona una forma!
+        </button>
 
-      </div>
-      <h4>Metodo de envio</h4>
-      <div class="container mb-3" style="border: solid; border-width: 2px;border-color: rgba(206, 142, 5, 0.349)" id="sendMethod">
+        <!-- Modal -->
+        <div class="modal fade" id="modalPago" data-backdrop="static" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalPAgoLabel">Forma de pago</h5>
+              </div>
+              <div class="modal-body">
+                <form id="formPago">
+                  <div class="d-block mb-3">
+                    <div class="custom-control custom-radio">
+                      <input type="radio" name="pago" value="Efectivo" id="efectivo" class="custom-control-input">
+                      <label for="efectivo" class="custom-control-label">Efectivo</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" name="pago" value="Tarjeta de credito" id="credito" class="custom-control-input">
+                      <label for="credito" class="custom-control-label">Tarjeta de credito</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <hr class="my-4">
+      <h5>Método de envío</h5>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEnvio">
+          Selecciona un método!
+        </button>
 
-      </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalEnvio" data-backdrop="static" tabindex="-1" aria-labelledby="modalEnvioLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalEnvioLabel">Método de envío</h5>
+              </div>
+              <div class="modal-body">
+                <form id="formEnvio">
+                  <div class="d-block mb-3">
+                    <div class="custom-control custom-radio">
+                      <input type="radio" name="envio" value="5%" id="normal" class="custom-control-input">
+                      <label for="normal" class="custom-control-label">Normal - 5% (12 a 15 días)</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" name="envio" value="7%" id="express" class="custom-control-input">
+                      <label for="express" class="custom-control-label">Express - 7% (5 a 8 días)</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" name="envio" value="15%" id="superExpress" class="custom-control-input">
+                      <label for="superExpress" class="custom-control-label">Super express - 15% (2 a 5 días)</label>
+                    </div>
+                  </div>
+                </form>
+                <p>El porcentaje del método seleccionado sera aplicado en la sección: Total</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <hr class="my-4">
+      <h5>Dirección de envío</h5>
+        <form>
+          <label for="calle">Calle:</label><br>
+          <input type="text" value="" id="calle" style="width: 80%;"><br><br>
+          <label for="esq">Esquina:</label><br>
+          <input type="text" value="" id="esq" style="width: 80%;"><br><br>
+          <label for="numero">Numero:</label><br>
+          <input type="text" value="" id="numero" style="width: 80%;">
+        </form>
+      <hr class="my-4">
       <h4>Total</h4>
-      <div class="container mb-3" style="border: solid; border-width: 2px;border-color: rgba(206, 142, 5, 0.349)" id="total">
-
+      <div class="mb-3 mx-auto">
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+                <h6 class="my-0">Subtotales</h6>
+                <small class="text-muted">Total productos</small>
+            </div>
+            <span class="text-muted" id="subtotales">-</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Forma de pago</h6>
+            </div>
+            <span class="text-muted" id="formaSeleccionada">selecciona forma</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Método de envío</h6>
+              <small class="text-muted" id="metodoSeleccionado"></small>
+            </div>
+            <span class="text-muted" id="porcentajeEnvio">selecciona método</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h5 class="my-0">Total</h5>
+            </div>
+            <h5 id="totales">selecciona método</h5>
+          </li>
+        </ul>
       </div>
+      <hr class="my-4">
+      <button value="Comprar" class="mb-1" id="buyButton" disabled>Comprar!</button>
     </div>
   </main>
   <footer class="text-muted">

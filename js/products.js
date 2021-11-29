@@ -50,20 +50,16 @@ function showProductsList(){
 
          //variable vacia que se llena de info de los objetos para ser enviada al html      
         contentToAppend += `
-        <a href="product-info.html" class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + item.imgSrc + `" alt="` + item.description + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ item.name +`</h4>
-                        <small class="text-muted">` + item.currency + `` + item.cost + `<br> Cant. Vendidos: ` + item.soldCount + `</small>
-                    </div>
-                <p>` + item.description + `</p>
-                </div>
+        <div class="card col-lg-3 col-sm-6 pb-1" style="max-width: 250px; max-height: 500px; padding-top: 5px">
+            <img src="`+ item.imgSrc +`" class="card-img-top" alt="`+ item.name +`">
+            <div class="card-body">
+                <h5 class="card-title overflow-auto" style="max-height: 25px">`+ item.name +`</h5>
+                <p class="card-text overflow-auto" style="height: 75px">`+ item.description +`</p>
+                <p class="card-text text-muted overflow-auto mb-1" style="max-height: 70px" styles="margin: 0px !important;">` + item.currency + `` + item.cost + `
+                <br> Cant. Vendidos: ` + item.soldCount + `</p>
+                <a href="product-info.html" class="btn btn-primary overflow-auto" style="width: 100%; max-height: 65px">VER PRODUCTO</a>
             </div>
-        </a>
+        </div>
         `
         }
         

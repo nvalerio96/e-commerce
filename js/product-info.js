@@ -93,7 +93,7 @@ function showRelatedProducts(relatedProductsArray, criteria) {
 
         if(criteria.indexOf(relatedProductsArray.indexOf(productOfArray)) != -1) {
             relatedToAppend += `
-            <div class="card col-lg-3 col-md-4 col-sm-6" style="max-width: 250px; max-height: 350px; padding-top: 5px">
+            <div class="card col-lg-3 col-md-4 col-sm-6" style="max-width: 250px; max-height: 400px; padding-top: 5px">
                 <img src="`+productOfArray.imgSrc+`" class="card-img-top" alt="`+productOfArray.name+`">
                 <div class="card-body">
                     <h5 class="card-title overflow-auto" style="max-height: 50px">`+productOfArray.name+`</h5>
